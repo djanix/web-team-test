@@ -1,0 +1,15 @@
+version: '3'
+services:
+  carousel-server:
+    build: ./carousel-server
+    volumes:
+      - ./carousel-server:/app
+  carousel-client:
+    build: ./carousel-client
+    ports:
+      - 3000:3000
+    volumes:
+      - ./carousel-client:/app
+      - /app/node_modules
+    environment:
+      - CHOKIDAR_USEPOLLING=true
